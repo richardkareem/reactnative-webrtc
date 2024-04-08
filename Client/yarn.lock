@@ -5654,6 +5654,16 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-health-connect@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-health-connect/-/react-native-health-connect-2.0.1.tgz#655758bfae08ff61909c8cc5fcddb038c7f85d45"
+  integrity sha512-B5dyyXhlIgLeuc0QWk9Ix1veMCMyE+lnh3+Cv0Cg2GfUdb7oPimAW7BU9NTl8mRKidJ0Gw/hvGgn9N+sGVXfXg==
+
+react-native-image-picker@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-7.1.1.tgz#89ea4611d5a05e4748adefef9bdf22e175f6f56d"
+  integrity sha512-8zQS8RJkGq+jV6bzmIQ560QL2tccXUwouDWktJt7typfNu/QpuDm9pnESeLkdA5MHGTMm8YR09tcV1qtBD+0fg==
+
 react-native-safe-area-context@^4.9.0:
   version "4.9.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.9.0.tgz#21a570ca3594cb4259ba65f93befaa60d91bcbd0"

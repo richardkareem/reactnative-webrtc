@@ -45,13 +45,12 @@ module.exports.initIO = (httpServer) => {
 
     socket.on('livestream', (data) => {
       let callerId = data.callerId;
-      let rtcMessage = data.rtcMessage
-      streamer = callerId;
-      console.log('masuk evenet liveStream server, streamer: ', streamer);
+      let rtcMessage = data.rtcMessage;
+      
       clientId.forEach((item) => {
         if (item != callerId) {
           socket.to(item).emit('newlivestream', {
-            callerId: socket.user,
+            callerId: item,
             rtcMessage: rtcMessage
           })
         }
@@ -61,12 +60,10 @@ module.exports.initIO = (httpServer) => {
     socket.on('joinlive', data =>{
       let viewer = data.calleId;
       let rtcMessage = data.rtcMessage
-
-      console.log('masuk evenet joinlive server, streamer: ', streamer);
+      
       if(streamer){
         const indexStreamer =  clientId.findIndex(item => item == streamer);
         if(indexStreamer != -1){
-          console.log('pengiriman sinyal evenet joinlive');
           socket.to(clientId[indexStreamer]).emit('joinlive', {
             viewer,
             rtcMessage
@@ -76,7 +73,7 @@ module.exports.initIO = (httpServer) => {
     })
 
     socket.on('ICEcandidatels', (data) => {
-      console.log("ICE Candidatels server Berjalan: ", data);
+      // console.log("ICE Candidatels server Berjalan: ", data);
       let callerId = data.calleeId;
       let rtcMessage = data.rtcMessage;
       clientId.forEach((item) => {

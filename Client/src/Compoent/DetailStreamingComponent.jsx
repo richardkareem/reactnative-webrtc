@@ -4,65 +4,68 @@ import {
     SafeAreaView,
     StyleSheet,
     View,
-    StatusBar,
+    Dimensions,
 } from 'react-native';
 import {
     RTCView,
 } from 'react-native-webrtc';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-const DetailStreamingComponent = ({ localStream, remoteStream}) => {
+
+const { height, width } = Dimensions.get('window')
+const HEIGHT_VIDEO = height / 2 - 32;
+const DetailStreamingComponent = ({ localStream, remoteStream }) => {
     const [stream, setStream] = useState(false)
     const start = async () => {
         if (!stream) {
-          setStream(true)
+            setStream(true)
         }
-      };
-      const stop = () => {
+    };
+    const stop = () => {
         if (stream) {
-          setStream(false);
+            setStream(false);
         }
-      };
-
+    };
+    console.log({ remoteStream: remoteStream.toURL() });
+    console.log({ localStream: localStream.toURL() });
     return (
-        <>
-            <StatusBar barStyle="dark-content" />
-            <SafeAreaView style={styles.body}>
-                {
-                    stream && localStream ?
-                        <RTCView
-                            streamURL={localStream.toURL()}
-                            style={styles.stream} /> : null
-                }
 
-                {remoteStream ?
+        <SafeAreaView style={styles.body}>
+            {
+                stream && localStream ?
                     <RTCView
-                        streamURL={remoteStream.toURL()}
-                        style={styles.stream}
-                    /> : null
-                }
+                        streamURL={localStream.toURL()}
+                        style={[styles.stream, {borderWidth:5, borderColor:'red', backgroundColor:"white"}]} /> : null
+            }
 
-                {localStream ? <View
-                    style={styles.footer}>
-                    <Button
-                        title="Start"
-                        onPress={start} />
-                    <Button
-                        title="Stop"
-                        onPress={stop} />
-                </View> : null}
+            {remoteStream ?
+                <RTCView
+                    streamURL={remoteStream.toURL()}
+                    style={[styles.stream, { backgroundColor:'yellow' }]}
+                /> : null
+            }
 
-            </SafeAreaView>
-        </>
+            {localStream ? <View
+                style={styles.footer}>
+                <Button
+                    title="Start"
+                    onPress={start} />
+                <Button
+                    title="Stop"
+                    onPress={stop} />
+            </View> : null}
+
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     body: {
-        backgroundColor: Colors.white,
-        ...StyleSheet.absoluteFill
+        backgroundColor: 'green',
+        flex: 1,
     },
     stream: {
-        flex: 1
+        height: HEIGHT_VIDEO,
+        width: width
     },
     footer: {
         backgroundColor: Colors.lighter,

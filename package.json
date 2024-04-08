@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-native-sensors": "^7.3.6"
+  }
+}
